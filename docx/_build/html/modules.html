@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Модули &#8212; документация ApiProject 1.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=9ca2116e"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=9bfe3ffa"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="ApiProject документация" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-api">
+<span id="id1"></span><h1>Модули<a class="headerlink" href="#module-api" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Интерфейс для получения текущей погоды через API weatherbit.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="api.current_weather">
+<span class="sig-prename descclassname"><span class="pre">api.</span></span><span class="sig-name descname"><span class="pre">current_weather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">city</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#api.current_weather" title="Link to this definition">¶</a></dt>
+<dd><p>Возвращает текущую погоду для указанного города.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>city</strong> (<em>str</em>) – Название города на любом поддерживаемом языке.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ответ API в виде словаря или <code class="docutils literal notranslate"><span class="pre">None</span></code> при ошибке/некорректном вводе.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-main">CLI-приложение для получения и сохранения текущей погоды.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="main.main">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.main" title="Link to this definition">¶</a></dt>
+<dd><p>Точка входа CLI.</p>
+<p>Разбирает аргументы командной строки, получает данные погоды и выводит их
+в консоль или сохраняет в файлы/БД.</p>
+</dd></dl>
+
+<p id="module-save">Утилиты для сохранения погодных данных в файлы.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="save.save_json">
+<span class="sig-prename descclassname"><span class="pre">save.</span></span><span class="sig-name descname"><span class="pre">save_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#save.save_json" title="Link to this definition">¶</a></dt>
+<dd><p>Сохраняет погодные данные в JSON-файл <code class="docutils literal notranslate"><span class="pre">report.json</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – Словарь с данными о погоде, ожидает ключи, которые
+возвращает API weatherbit.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="save.save_txt">
+<span class="sig-prename descclassname"><span class="pre">save.</span></span><span class="sig-name descname"><span class="pre">save_txt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#save.save_txt" title="Link to this definition">¶</a></dt>
+<dd><p>Сохраняет погодные данные в текстовый файл <code class="docutils literal notranslate"><span class="pre">report.txt</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – Словарь с данными о погоде, ожидает ключи, которые
+возвращает API weatherbit.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-datadase">Простые вспомогательные функции для работы с таблицей <code class="docutils literal notranslate"><span class="pre">weather_data</span></code>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="datadase.db_create">
+<span class="sig-prename descclassname"><span class="pre">datadase.</span></span><span class="sig-name descname"><span class="pre">db_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datadase.db_create" title="Link to this definition">¶</a></dt>
+<dd><p>Добавляет запись о погоде в таблицу <code class="docutils literal notranslate"><span class="pre">weather_data</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – Данные о погоде из API weatherbit.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datadase.db_delete">
+<span class="sig-prename descclassname"><span class="pre">datadase.</span></span><span class="sig-name descname"><span class="pre">db_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">city</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datadase.db_delete" title="Link to this definition">¶</a></dt>
+<dd><p>Удаляет записи о городе из таблицы <code class="docutils literal notranslate"><span class="pre">weather_data</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>city</strong> (<em>str</em>) – Название города.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datadase.db_select">
+<span class="sig-prename descclassname"><span class="pre">datadase.</span></span><span class="sig-name descname"><span class="pre">db_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datadase.db_select" title="Link to this definition">¶</a></dt>
+<dd><p>Выводит в stdout все строки указанной таблицы.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em>) – Имя таблицы базы данных.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">ApiProject</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+<p class="caption" role="heading"><span class="caption-text">Содержание</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#api.current_weather"><code class="docutils literal notranslate"><span class="pre">current_weather()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#save.save_json"><code class="docutils literal notranslate"><span class="pre">save_json()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#save.save_txt"><code class="docutils literal notranslate"><span class="pre">save_txt()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datadase.db_create"><code class="docutils literal notranslate"><span class="pre">db_create()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datadase.db_delete"><code class="docutils literal notranslate"><span class="pre">db_delete()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datadase.db_select"><code class="docutils literal notranslate"><span class="pre">db_select()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="предыдущая глава">ApiProject документация</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/modules.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
